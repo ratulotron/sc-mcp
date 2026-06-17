@@ -133,6 +133,10 @@ uv run sc-mcp      # starts the stdio server
 uv run pytest
 ```
 
+Maintaining compatibility as `sc` evolves — when to add/update tools, bump
+`SUPPORTED_SC_VERSION`, and the read-only invariants — is documented in
+[CLAUDE.md](CLAUDE.md).
+
 ## Versioning
 
 This package uses [SemVer](https://semver.org/). The tools are the public API:
