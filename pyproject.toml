@@ -1,0 +1,32 @@
+[project]
+name = "sc-mcp"
+version = "0.1.0"
+description = "MCP server wrapping the Scalable Capital `sc` CLI — broker overview, holdings, transactions, analytics, security news"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "ratulotron" }]
+keywords = ["mcp", "scalable-capital", "broker", "portfolio", "claude", "codex"]
+dependencies = ["mcp>=1.26,<2"]
+
+[project.urls]
+Homepage = "https://github.com/ratulotron/sc-mcp"
+
+[project.scripts]
+sc-mcp = "sc_mcp.server:main"
+
+[build-system]
+requires = ["uv_build>=0.11.8,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = ["pytest>=8.4.2", "ruff>=0.9", "pre-commit>=4"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+extend-select = ["I"]  # import sorting
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
