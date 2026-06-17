@@ -46,6 +46,15 @@ git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin vX.Y.Z
 gh release create vX.Y.Z --title vX.Y.Z --notes "..."
 ```
 
+Then rebuild the Claude Desktop bundle (its manifest pins both `version` and the
+`@vX.Y.Z` git ref):
+
+```bash
+# bump version + git ref in mcpb/manifest.json, then:
+npx -y @anthropic-ai/mcpb pack mcpb dist/sc-mcp.mcpb
+gh release upload vX.Y.Z dist/sc-mcp.mcpb
+```
+
 ## Invariants — do not break
 
 - **Read-only.** Never add `trade` or `savings-plans` tools — money-moving and

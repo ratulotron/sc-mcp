@@ -100,10 +100,26 @@ command = "uvx"
 args = ["--from", "git+https://github.com/ratulotron/sc-mcp@v0.1.0", "sc-mcp"]
 ```
 
-### Claude Desktop / VS Code / other MCP clients
+### Claude Desktop (bundle — no config editing)
 
-Add the standard server config (in `claude_desktop_config.json`, VS Code
-`mcp.json`, etc.):
+Download [**`sc-mcp.mcpb`**](https://github.com/ratulotron/sc-mcp/releases/latest/download/sc-mcp.mcpb),
+then in Claude Desktop go to **Settings → Extensions → Install Extension** and
+pick the file.
+
+You still need two things first (no bundle can remove these — they're
+Scalable's and uv's, not this project's):
+
+1. **[uv](https://docs.astral.sh/uv/) installed.** Claude Desktop ships Node but
+   not Python/uv, so a Python extension needs uv on your system.
+2. **The `sc` CLI installed and logged in** (see Prerequisites).
+
+If Claude Desktop can't find `uvx`, open the extension's settings and set the
+full path (e.g. `/opt/homebrew/bin/uvx`) — GUI apps on macOS don't always
+inherit your shell `PATH`.
+
+### VS Code / other MCP clients
+
+Add the standard server config (VS Code `mcp.json`, or any client's MCP config):
 
 ```json
 {

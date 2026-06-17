@@ -1,0 +1,30 @@
+{
+  "manifest_version": "0.3",
+  "name": "sc-mcp",
+  "display_name": "Scalable Capital (read-only)",
+  "version": "0.1.0",
+  "description": "Unofficial read-only MCP server for Scalable Capital broker data — overview, holdings, transactions, analytics, quotes, search, news.",
+  "author": {
+    "name": "ratulotron",
+    "url": "https://github.com/ratulotron"
+  },
+  "homepage": "https://github.com/ratulotron/sc-mcp",
+  "license": "MIT",
+  "server": {
+    "type": "binary",
+    "entry_point": "uvx",
+    "mcp_config": {
+      "command": "${user_config.uv_path}",
+      "args": ["--from", "git+https://github.com/ratulotron/sc-mcp@v0.1.0", "sc-mcp"]
+    }
+  },
+  "user_config": {
+    "uv_path": {
+      "type": "string",
+      "title": "Path to uvx",
+      "description": "Usually just 'uvx'. If Claude Desktop can't find it (common on macOS), set the full path — e.g. /opt/homebrew/bin/uvx, /usr/local/bin/uvx, or ~/.local/bin/uvx. Requires uv installed (https://docs.astral.sh/uv/) and a logged-in sc CLI.",
+      "default": "uvx",
+      "required": false
+    }
+  }
+}
