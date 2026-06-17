@@ -53,35 +53,71 @@ likely cause.
 
 ## Install
 
-No clone needed — run straight from GitHub with [uv](https://docs.astral.sh/uv/):
+Requires [uv](https://docs.astral.sh/uv/) (provides `uvx`). Every method below
+launches the server via `uvx` — no manual clone or `pip install`.
 
-```bash
-uvx --from git+https://github.com/ratulotron/sc-mcp sc-mcp
+### Claude Code (plugin — easiest)
+
+This repo is also a Claude Code plugin marketplace. Two commands:
+
+```text
+/plugin marketplace add ratulotron/sc-mcp
+/plugin install sc-mcp@ratulotron
 ```
 
-(That command starts the stdio server; harnesses launch it for you — see below.)
+That registers the `scalable-capital` MCP server and a usage skill. It also
+bundles a light skill that tells Claude when and how to use the tools.
 
-### Claude Code
+### Claude Code (manual)
 
 ```bash
-claude mcp add scalable-capital -- uvx --from git+https://github.com/ratulotron/sc-mcp sc-mcp
+claude mcp add scalable-capital -- uvx --from git+https://github.com/ratulotron/sc-mcp@v0.1.0 sc-mcp
 ```
 
-### Claude Desktop / Codex / Cursor
+### Cursor
 
-Add to the harness's MCP config (`claude_desktop_config.json`,
-`~/.codex/config.toml` `[mcp_servers]`, etc.):
+[**Add to Cursor**](cursor://anysphere.cursor-deeplink/mcp/install?name=scalable-capital&config=eyJjb21tYW5kIjogInV2eCIsICJhcmdzIjogWyItLWZyb20iLCAiZ2l0K2h0dHBzOi8vZ2l0aHViLmNvbS9yYXR1bG90cm9uL3NjLW1jcEB2MC4xLjAiLCAic2MtbWNwIl19)
+— or add to `.cursor/mcp.json` (or `~/.cursor/mcp.json`):
 
 ```json
 {
   "mcpServers": {
     "scalable-capital": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/ratulotron/sc-mcp", "sc-mcp"]
+      "args": ["--from", "git+https://github.com/ratulotron/sc-mcp@v0.1.0", "sc-mcp"]
     }
   }
 }
 ```
+
+### Codex
+
+Add to `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.scalable-capital]
+command = "uvx"
+args = ["--from", "git+https://github.com/ratulotron/sc-mcp@v0.1.0", "sc-mcp"]
+```
+
+### Claude Desktop / VS Code / other MCP clients
+
+Add the standard server config (in `claude_desktop_config.json`, VS Code
+`mcp.json`, etc.):
+
+```json
+{
+  "mcpServers": {
+    "scalable-capital": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/ratulotron/sc-mcp@v0.1.0", "sc-mcp"]
+    }
+  }
+}
+```
+
+> Pin the `@v0.1.0` tag (see [Versioning](#versioning)). Drop it to track the
+> latest `main`.
 
 ## Configuration
 

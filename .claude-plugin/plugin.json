@@ -1,0 +1,14 @@
+{
+  "name": "sc-mcp",
+  "description": "Unofficial read-only MCP server exposing Scalable Capital broker data (overview, holdings, transactions, analytics, quote, search, news) to Claude.",
+  "version": "0.1.0",
+  "author": {
+    "name": "ratulotron",
+    "url": "https://github.com/ratulotron"
+  },
+  "homepage": "https://github.com/ratulotron/sc-mcp",
+  "repository": "https://github.com/ratulotron/sc-mcp",
+  "license": "MIT",
+  "keywords": ["mcp", "scalable-capital", "broker", "portfolio"],
+  "mcpServers": "./.mcp.json"
+}

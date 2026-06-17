@@ -1,0 +1,14 @@
+{
+  "name": "ratulotron",
+  "description": "Unofficial MCP servers and tools by ratulotron.",
+  "owner": {
+    "name": "ratulotron"
+  },
+  "plugins": [
+    {
+      "name": "sc-mcp",
+      "source": ".",
+      "description": "Unofficial read-only MCP server for Scalable Capital broker data"
+    }
+  ]
+}
